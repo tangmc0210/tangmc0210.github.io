@@ -1,0 +1,101 @@
+@import "tailwindcss";
+@import "@fontsource-variable/fraunces";
+@import "@fontsource-variable/inter";
+
+/* Manual dark mode: .dark class on <html> */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ---------- Design tokens ---------- */
+@theme {
+  --font-sans: "Inter Variable", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-serif: "Fraunces Variable", ui-serif, Georgia, "Times New Roman", serif;
+  --font-mono: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, monospace;
+
+  /* Fluorescence-imaging accent palette (theme-independent) */
+  --color-fluor-cyan: #22d3ee;
+  --color-fluor-blue: #3b82f6;
+  --color-fluor-violet: #a855f7;
+  --color-fluor-magenta: #e879f9;
+  --color-fluor-amber: #fbbf24;
+}
+
+/* Semantic colors bound to runtime CSS vars so utilities follow the theme */
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-faint: var(--faint);
+  --color-line: var(--line);
+  --color-brand: var(--brand);
+  --color-brand-soft: var(--brand-soft);
+}
+
+:root {
+  --bg: #fbfbfd;
+  --surface: #ffffff;
+  --surface-2: #f4f4f7;
+  --ink: #16161d;
+  --muted: #51515b;
+  --faint: #8a8a95;
+  --line: #e7e7ec;
+  --brand: #4f46e5;       /* indigo-600 */
+  --brand-soft: #eef2ff;  /* indigo-50  */
+}
+
+.dark {
+  --bg: #08080c;
+  --surface: #101017;
+  --surface-2: #16161f;
+  --ink: #f3f3f6;
+  --muted: #a6a6b3;
+  --faint: #6a6a78;
+  --line: #23232e;
+  --brand: #818cf8;       /* indigo-400 */
+  --brand-soft: #1b1b2b;
+}
+
+/* ---------- Base ---------- */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-serif);
+  font-optical-sizing: auto;
+  letter-spacing: -0.018em;
+}
+
+a { color: inherit; }
+
+::selection {
+  background: color-mix(in oklab, var(--brand) 26%, transparent);
+}
+
+/* Fluorescent dot-grid motif, reusable as a utility */
+@utility dot-grid {
+  background-image: radial-gradient(
+    circle at center,
+    color-mix(in oklab, var(--color-fluor-cyan) 55%, transparent) 0,
+    transparent 1.5px
+  );
+  background-size: 24px 24px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

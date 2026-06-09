@@ -1,0 +1,67 @@
+---
+import Icon from "./Icon.astro";
+import { site, socials } from "../data/site";
+---
+
+<section id="top" class="relative overflow-hidden">
+  <div
+    class="dot-grid pointer-events-none absolute inset-0 opacity-[0.18] [mask-image:radial-gradient(ellipse_at_top_right,black,transparent_70%)]"
+    aria-hidden="true"
+  >
+  </div>
+  <div
+    class="relative mx-auto grid max-w-5xl items-center gap-12 px-5 py-20 sm:py-28 lg:grid-cols-[1.4fr_1fr]"
+  >
+    <div>
+      <p
+        class="inline-flex items-center gap-2 rounded-full border border-line bg-surface/60 px-3 py-1 text-sm text-muted"
+      >
+        <span
+          class="h-2 w-2 rounded-full bg-fluor-cyan shadow-[0_0_8px_var(--color-fluor-cyan)]"
+        ></span>
+        {site.role} · {site.affiliation}
+      </p>
+      <h1 class="mt-5 text-balance font-serif text-5xl font-semibold leading-[1.05] sm:text-6xl">
+        {site.name}
+        <span class="mt-1 block text-3xl text-muted sm:text-4xl">{site.nameZh}</span>
+      </h1>
+      <p class="mt-5 max-w-xl text-lg leading-relaxed text-muted">{site.tagline}</p>
+      <div class="mt-7 flex flex-wrap gap-2.5">
+        {
+          socials.map((s) => (
+            <a
+              href={s.href}
+              target={s.href.startsWith("http") ? "_blank" : undefined}
+              rel="noopener"
+              class="inline-flex items-center gap-2 rounded-full border border-line bg-surface px-4 py-2 text-sm font-medium transition-all hover:-translate-y-0.5 hover:border-brand hover:text-brand"
+            >
+              <Icon name={s.icon} class="h-4 w-4" />
+              {s.label}
+            </a>
+          ))
+        }
+      </div>
+    </div>
+    <div class="justify-self-center lg:justify-self-end">
+      <div class="relative">
+        <div
+          class="absolute -inset-3 rounded-[1.8rem] bg-gradient-to-tr from-fluor-cyan/40 to-fluor-magenta/40 opacity-50 blur-2xl"
+          aria-hidden="true"
+        >
+        </div>
+        <img
+          src="/avatar.jpg"
+          alt={`${site.name}, ${site.role} at ${site.affiliation}`}
+          width="1050"
+          height="1400"
+          class="relative aspect-[3/4] w-56 rounded-3xl border border-line object-cover shadow-xl sm:w-64"
+        />
+      </div>
+    </div>
+  </div>
+  <div class="flex justify-center pb-10">
+    <a href="#about" class="text-faint transition-colors hover:text-ink" aria-label="Scroll to About">
+      <Icon name="arrowDown" class="h-5 w-5 animate-bounce" />
+    </a>
+  </div>
+</section>

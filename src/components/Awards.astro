@@ -1,0 +1,25 @@
+---
+import { awards } from "../data/awards";
+---
+
+<section id="awards" class="border-t border-line bg-surface-2/30">
+  <div class="mx-auto max-w-5xl px-5 py-20 sm:py-24">
+    <p class="text-xs font-semibold uppercase tracking-[0.2em] text-brand">Honors</p>
+    <h2 class="mt-3 font-serif text-3xl font-semibold tracking-tight sm:text-4xl">
+      Honors &amp; awards
+    </h2>
+    <ul class="mt-8 divide-y divide-line border-y border-line">
+      {
+        awards.map((a) => (
+          <li class="flex items-baseline justify-between gap-4 py-4">
+            <span>
+              <span class="font-medium">{a.title}</span>
+              {a.org && <span class="text-muted"> · {a.org}</span>}
+            </span>
+            <span class="shrink-0 font-mono text-sm text-faint">{a.year}</span>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>

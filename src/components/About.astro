@@ -1,0 +1,63 @@
+---
+const interests = [
+  "Spatial transcriptomics",
+  "In situ imaging & sequencing",
+  "FFPE tissue",
+  "Omics data analysis",
+];
+
+const education = [
+  {
+    period: "2024 — Present",
+    degree: "Ph.D. Student (5-year program)",
+    org: "BIOPIC, Peking University",
+  },
+  {
+    period: "Class of 2024",
+    degree: "B.S., Integrated Science Program",
+    org: "Yuanpei College, Peking University",
+  },
+];
+---
+
+<section id="about" class="mx-auto max-w-5xl px-5 py-20 sm:py-24">
+  <p class="text-xs font-semibold uppercase tracking-[0.2em] text-brand">About</p>
+  <h2 class="mt-3 font-serif text-3xl font-semibold tracking-tight sm:text-4xl">
+    Methods for reading RNA in space
+  </h2>
+  <div class="mt-8 grid gap-10 lg:grid-cols-[1.5fr_1fr]">
+    <div>
+      <p class="text-lg leading-relaxed text-muted">
+        I am a Ph.D. candidate at BIOPIC, Peking University, working on imaging-based spatial
+        transcriptomics. My work bridges wet-lab method development and the computational analysis
+        behind it — extending high-plex <em class="not-italic text-ink">in situ</em> RNA imaging to
+        demanding samples such as FFPE tissue, and applying spatial transcriptomics across a range of
+        biological questions. I completed my B.S. in the Integrated Science Program at Yuanpei
+        College, Peking University.
+      </p>
+      <div class="mt-6 flex flex-wrap gap-2">
+        {
+          interests.map((t) => (
+            <span class="rounded-full border border-line bg-surface px-3 py-1 text-sm text-muted">
+              {t}
+            </span>
+          ))
+        }
+      </div>
+    </div>
+    <div>
+      <h3 class="font-serif text-lg font-semibold">Education</h3>
+      <ul class="mt-4 space-y-5">
+        {
+          education.map((e) => (
+            <li class="border-l-2 border-line pl-4">
+              <p class="font-mono text-xs text-faint">{e.period}</p>
+              <p class="mt-1 font-medium">{e.degree}</p>
+              <p class="text-sm text-muted">{e.org}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+</section>

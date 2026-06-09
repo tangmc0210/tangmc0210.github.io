@@ -1,0 +1,36 @@
+---
+import Icon from "./Icon.astro";
+import { site, socials } from "../data/site";
+---
+
+<section id="contact" class="mx-auto max-w-5xl px-5 py-20 sm:py-24">
+  <p class="text-xs font-semibold uppercase tracking-[0.2em] text-brand">Contact</p>
+  <h2 class="mt-3 font-serif text-3xl font-semibold tracking-tight sm:text-4xl">Get in touch</h2>
+  <p class="mt-4 max-w-xl text-muted">
+    Always glad to talk about spatial transcriptomics, imaging methods, and omics data analysis —
+    feel free to reach out.
+  </p>
+  <a
+    href={`mailto:${site.email}`}
+    class="mt-6 inline-block font-serif text-2xl text-brand hover:underline sm:text-3xl"
+  >
+    {site.email}
+  </a>
+  <div class="mt-8 flex flex-wrap gap-2.5">
+    {
+      socials
+        .filter((s) => s.icon !== "email")
+        .map((s) => (
+          <a
+            href={s.href}
+            target={s.href.startsWith("http") ? "_blank" : undefined}
+            rel="noopener"
+            class="inline-flex items-center gap-2 rounded-full border border-line bg-surface px-4 py-2 text-sm font-medium transition-all hover:-translate-y-0.5 hover:border-brand hover:text-brand"
+          >
+            <Icon name={s.icon} class="h-4 w-4" />
+            {s.label}
+          </a>
+        ))
+    }
+  </div>
+</section>

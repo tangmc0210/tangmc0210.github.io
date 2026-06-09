@@ -1,0 +1,51 @@
+---
+import Icon from "./Icon.astro";
+import { site } from "../data/site";
+
+const links = [
+  { href: "#about", label: "About" },
+  { href: "#research", label: "Research" },
+  { href: "#publications", label: "Publications" },
+  { href: "#contact", label: "Contact" },
+];
+---
+
+<header class="sticky top-0 z-50 border-b border-line/70 bg-bg/70 backdrop-blur-md">
+  <nav class="mx-auto flex h-16 max-w-5xl items-center justify-between px-5">
+    <a href="#top" class="font-serif text-lg font-semibold tracking-tight">{site.name}</a>
+    <div class="flex items-center gap-1">
+      <ul class="mr-2 hidden items-center gap-1 sm:flex">
+        {
+          links.map((l) => (
+            <li>
+              <a
+                href={l.href}
+                class="rounded-full px-3 py-1.5 text-sm text-muted transition-colors hover:bg-surface-2 hover:text-ink"
+              >
+                {l.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+      <button
+        id="theme-toggle"
+        type="button"
+        aria-label="Toggle dark mode"
+        class="grid h-9 w-9 place-items-center rounded-full border border-line text-muted transition-colors hover:bg-surface-2 hover:text-ink"
+      >
+        <Icon name="sun" class="hidden h-4 w-4 dark:block" />
+        <Icon name="moon" class="block h-4 w-4 dark:hidden" />
+      </button>
+    </div>
+  </nav>
+</header>
+
+<script>
+  const btn = document.getElementById("theme-toggle");
+  btn?.addEventListener("click", () => {
+    const dark = !document.documentElement.classList.contains("dark");
+    document.documentElement.classList.toggle("dark", dark);
+    localStorage.setItem("theme", dark ? "dark" : "light");
+  });
+</script>
