@@ -14,7 +14,7 @@ export const site = {
   tagline:
     "Imaging-based spatial transcriptomics — building high-plex in situ methods and the analysis behind them.",
   location: "Beijing, China",
-  url: "https://tangmc0210.github.io",
+  url: "https://tangmc.me",
   email: "tangmc0210@foxmail.com",
 } as const;
 

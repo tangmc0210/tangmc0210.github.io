@@ -2,7 +2,8 @@
 
 Personal academic homepage of **Tang Mingchuan (唐明川)** — Ph.D. candidate at BIOPIC, Peking University.
 
-Built with [Astro](https://astro.build) + [Tailwind CSS](https://tailwindcss.com), deployed to GitHub Pages → https://tangmc0210.github.io
+Built with [Astro](https://astro.build) + [Tailwind CSS](https://tailwindcss.com), deployed to GitHub Pages → https://tangmc.me.
+The original https://tangmc0210.github.io address redirects to this primary domain.
 
 ## Develop
 
